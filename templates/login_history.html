@@ -1,0 +1,45 @@
+<html>
+{% block content %}
+
+<a href="/spell_check">Spellcheck</a>
+<a href="/history">History</a>
+<a href="/logout">Logout</a>
+
+<div class='content-section'>
+  <form method="POST" name='login_history' id='login_history'> 
+    {{ form.hidden_tag() }}
+    <br>
+
+    <div class="form-group" id="userid">
+        {{ form.userid.label }}
+        <label>Enter an username:</label><br>
+        {% if form.userid.errors %}
+            {{ form.userid }}
+            <div class="invalid-feedback">
+                {% for error in form.userid.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.userid }}
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.submit }}
+    </div>
+
+    <p>{{ tbl|safe }}</p>
+
+    {% for item in data%}
+        <p id='login{{item}}'>{{item[0]}}</p>
+        <p id='username'>{{item[1]}}</p>
+        <p id='login{{item}}_time'>{{item[2]}}</p>
+        <p id='logout{{item}}_time'>{{item[3]}}</p>
+    {% endfor %}
+
+  </form>
+</div>
+
+
+{% endblock content %}
+</html>

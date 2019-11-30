@@ -1,0 +1,41 @@
+<html>
+{% block content %}
+
+<a href="/spell_check">Spellcheck</a>
+<a href="/logout">Logout</a>
+
+<div class='content-section'>
+  <form method="POST" name='history' action='/history' id='history_admin_view'> 
+    {{ form.hidden_tag() }}
+    <br>
+    <div class='form-group'>
+      <h1>HISTORY PAGE</h1><br>
+      <label>Enter an username:</label><br>
+      {% if form.userquery.errors %}
+        <p id='userquery'>{{ form.userquery }}</p> 
+        <div class="invalid-feedback">
+            {% for error in form.userquery.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+      {% else %}
+          <p id='userquery'>{{ form.userquery }}</p>
+      {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.submit }}
+    </div>
+
+    <br><label>Total number of queries: {{ numqueries }} </label>
+
+    {% for item in query %}
+      <br><a href="/history/query{{item}}" id='query{{item}}'>query{{item}}</a>
+    {% endfor %}
+
+    </div>
+  </form>
+</div>
+
+
+{% endblock content %}
+</html>

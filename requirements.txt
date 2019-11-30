@@ -1,0 +1,8 @@
+datetime
+flask
+flask_login
+flask_wtf
+prettytable
+wtforms
+wtforms_validators
+werkzeug

@@ -1,0 +1,27 @@
+version: '3.7'
+  
+services:
+  webapp:
+    image: kz1106/webapp
+    ports:
+      - 8080:5000
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 100M
+        reservations: 
+          cpus: "0.25"
+          memory: 30M
+      restart_policy:
+        condition: on-failure
+    secrets:
+      - my_password
+      - my_secret
+
+secrets:
+  my_password:
+    external: true
+  my_secret:
+    external: true

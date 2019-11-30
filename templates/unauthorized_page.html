@@ -1,0 +1,8 @@
+<html>
+{% block title %}Unauthorized page{% endblock %}
+{% block body %}
+  <h1>You are not authorized to see the content of this page</h1>
+  <p><!-- What you were looking for is just not there. -->
+  <p><a href="{{ url_for('spell_check') }}">Go back to where you were</a>
+{% endblock %}
+</html>

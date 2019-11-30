@@ -1,0 +1,27 @@
+<html>
+{% block content %}
+
+<a href="/spell_check">Spellcheck</a>
+<a href="/logout">Logout</a>
+
+<div class='content-section'>
+  <form method="POST" name='history' action='/history' id='history'> 
+    {{ form.hidden_tag() }}
+    <br>
+    <div class='form-group'>
+      <h1>HISTORY PAGE</h1>
+
+      <label>Total number of queries: {{ numqueries }} </label><br>
+
+      {% for item in query %}
+        <br><a href="/history/query{{item}}" id="query{{item}}">query{{item}}</a>
+        <p id="query{{item}}">query{{item}}</p>
+      {% endfor %}
+    
+    </div>
+  </form>
+</div>
+
+
+{% endblock content %}
+</html>
